@@ -13,13 +13,19 @@ class Test(Base):
         """
         # Send your data json to the convert line method.
         data = self.convert_line(request['data'])
+
         # This is an example of using enrichment from the base class.
         self.enrich(request, data)
+
         # Validation of column's length
         self.validate_varchar(data, {"a": 2})
+
         # Example of using keys renaming
         self.rename_keys(data, {"d": "f"})
-        # Return the line after conversion
+
+        # TODO: Continue to transform your event here
+
+        # Return the line after the transformation
         return self.prepare_line_for_copy(data)
 
 
